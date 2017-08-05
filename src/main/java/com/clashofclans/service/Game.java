@@ -6,7 +6,7 @@ import com.clashofclans.model.Cannon;
 
 public class Game {
 
-    public void armyAttackOnVillage(Cannon cannon,
+    public String armyAttackOnVillage(Cannon cannon,
                                     Barbarian barbarian) {
 
         final int cannonDamagePerHit = cannon.getDamagePerHit();
@@ -15,7 +15,14 @@ public class Game {
 
             barbarian.hitByEnemy(cannonDamagePerHit);
             cannon.hitByEnemy(barbarianDamagePerHit);
-
+            if(barbarian.isAlive() && cannon.isAlive()){
+                continue;
+            }
+            if(!barbarian.isAlive()){
+                return "Defence Wins";
+            } else if(!cannon.isAlive()){
+                return "Attack Wins";
+            }
         }
     }
 }

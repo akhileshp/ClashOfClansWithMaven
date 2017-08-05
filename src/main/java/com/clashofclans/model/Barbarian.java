@@ -1,8 +1,6 @@
 package com.clashofclans.model;
 
 
-import com.clashofclans.exception.BarbarianKilledException;
-
 public class Barbarian {
     private final int damagePerHit;
     private int health;
@@ -22,8 +20,9 @@ public class Barbarian {
 
     public void hitByEnemy(int hitPower) {
         health -= hitPower;
-        if (health <= 0) {
-            throw new BarbarianKilledException();
-        }
+    }
+
+    public boolean isAlive() {
+        return health >= 0;
     }
 }

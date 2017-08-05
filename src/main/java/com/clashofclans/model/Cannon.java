@@ -1,8 +1,6 @@
 package com.clashofclans.model;
 
 
-import com.clashofclans.exception.CannonKilledException;
-
 public class Cannon {
 
     private final int damagePerHit;
@@ -23,8 +21,9 @@ public class Cannon {
 
     public void hitByEnemy(int hitPower) {
         hitPoints -= hitPower;
-        if (hitPoints <= 0) {
-            throw new CannonKilledException();
-        }
+    }
+
+    public boolean isAlive() {
+        return hitPoints >= 0;
     }
 }
